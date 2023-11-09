@@ -1,0 +1,8 @@
+node_modules
+
+# Local
+.env
+files
+
+# Mac
+.DS_Store

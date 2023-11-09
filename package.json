@@ -1,0 +1,20 @@
+{
+  "name": "song-creation-pipeline",
+  "version": "0.0.1",
+  "description": "Collection of Scripts used to help generate music mostly automatically",
+  "main": "index.js",
+  "scripts": {
+    "crawl": "node src/crawler.js"
+  },
+  "keywords": [
+    "ai",
+    "music"
+  ],
+  "author": "Thomas Maier",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "cherio": "^1.0.0-rc.2",
+    "puppeteer": "^21.4.1"
+  }
+}
