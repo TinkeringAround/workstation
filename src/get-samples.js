@@ -25,12 +25,12 @@ const getSounds = async (url) => {
     );
     Logger.log(url, " : ", urls);
 
-    for (let [index, mp3Url] of urls.entries()) {
-      downloadMp3(
-        mp3Url,
-        `/Users/thomasmaier/Documents/Repos/song-creation-pipeline/files/${index}-${SEARCH}.mp3`
-      );
-    }
+    // for (let [index, mp3Url] of urls.entries()) {
+    //   downloadMp3(
+    //     mp3Url,
+    //     `/Users/thomasmaier/Documents/Repos/song-creation-pipeline/files/${index}-${SEARCH}.mp3`
+    //   );
+    // }
 
     return true;
   } catch (error) {
