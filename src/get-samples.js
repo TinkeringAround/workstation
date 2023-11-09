@@ -1,4 +1,4 @@
-const FETCH = require("node-fetch");
+const AXIOS = require("axios");
 const CHEERIO = require("cheerio");
 const CP = require("child_process");
 const LOGGER = require("./logger");
@@ -17,21 +17,20 @@ const downloadMp3 = async function (url, fileName) {
 
 const getSounds = async (url) => {
   try {
-    const response = await FETCH(url);
-    const body = await response.text();
-    const queryHtml = CHEERIO.load(body);
+    const response = await AXIOS.get(url);
+    const queryHtml = CHEERIO.load(response.data);
 
     const urls = [...queryHtml(`[${ATTRIBUTE}]`)].map(
       (e) => e.attribs[ATTRIBUTE]
     );
     Logger.log(url, " : ", urls);
 
-    // for (let [index, mp3Url] of urls.entries()) {
-    //   downloadMp3(
-    //     mp3Url,
-    //     `/Users/thomasmaier/Documents/Repos/song-creation-pipeline/files/${index}-${SEARCH}.mp3`
-    //   );
-    // }
+    for (let [index, mp3Url] of urls.entries()) {
+      downloadMp3(
+        mp3Url,
+        `/Users/thomasmaier/Documents/Repos/song-creation-pipeline/files/${index}-${SEARCH}.mp3`
+      );
+    }
 
     return true;
   } catch (error) {
