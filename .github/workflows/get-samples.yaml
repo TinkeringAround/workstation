@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "20.x"
-      - run: yarn version
-      - run: node -v
       - run: |
-          echo "Env: ${{ github.event.inputs.search_query }}"
+          yarn
+          echo "Searching Samples by Term: ${{ github.event.inputs.search_query }}"
+          node test.js ${{ github.event.inputs.search_query }}
