@@ -19,4 +19,5 @@ jobs:
       - run: |
           yarn
           echo "Searching Samples for Search Query: ${{ github.event.inputs.search_query }}"
+          export ${{ secrets.TEST_TOKEN }}
           node src/get-samples.js ${{ github.event.inputs.search_query }}
