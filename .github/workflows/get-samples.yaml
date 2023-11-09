@@ -1,4 +1,4 @@
-name: Get-Sound-Samples
+name: Get-Samples
 on:
   workflow_dispatch:
     inputs:
@@ -18,5 +18,5 @@ jobs:
           node-version: "20.x"
       - run: |
           yarn
-          echo "Searching Samples by Term: ${{ github.event.inputs.search_query }}"
-          node test.js ${{ github.event.inputs.search_query }}
+          echo "Searching Samples for Search Query: ${{ github.event.inputs.search_query }}"
+          node src/get-samples.js ${{ github.event.inputs.search_query }}

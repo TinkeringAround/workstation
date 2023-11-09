@@ -2,9 +2,17 @@ const fetch = require("node-fetch");
 const cheerio = require("cheerio");
 const cp = require("child_process");
 
+// Modules
+const Logger = require("./logger");
+
+// Variables
+const LOGGER = new Logger("Get-Samples");
 const SEARCH = process.argv.slice(2); // the search query
 const ATTRIBUTE = "data-mp3";
 
+console.log(process.env);
+
+// Functions
 const downloadMp3 = async function (url, fileName) {
   return cp.execSync(`curl -o ${fileName}  '${url}'`);
 };
@@ -18,7 +26,7 @@ const getSounds = async (url) => {
     const urls = [...queryHtml(`[${ATTRIBUTE}]`)].map(
       (e) => e.attribs[ATTRIBUTE]
     );
-    console.log(url, " : ", urls);
+    Logger.log(url, " : ", urls);
 
     // for (let [index, mp3Url] of urls.entries()) {
     //   downloadMp3(
@@ -34,12 +42,15 @@ const getSounds = async (url) => {
   }
 };
 
+// Main
 (async () => {
-  //  MKDIR in Drive Inbox
+  LOGGER.log("--- Start ---");
+
+  // TODO: MKDIR in Drive Inbox
 
   await getSounds(
     `https://freesound.org/search/?q=${SEARCH}&f=license%3A%22creative+commons+0%22+duration%3A%5B0+TO+20%5D&w=&tm=0&s=Automatic+by+relevance&advanced=1&g=&only_p=&cm=0&page=1#sound`
   );
 
-  console.log("Process End");
+  LOGGER.log("--- End ---");
 })();
