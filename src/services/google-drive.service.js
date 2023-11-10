@@ -1,6 +1,7 @@
 const { google } = require("googleapis");
 const fs = require("fs");
 const path = require("path");
+require("dotenv").config();
 
 const CLIENT_EMAIL = process.env.GOOGLE_DRIVE_CLIENT_EMAIL;
 const PRIVATE_KEY = Buffer.from(

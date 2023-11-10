@@ -8,7 +8,7 @@ on:
         default: "loop"
 
 jobs:
-  collecting-samples:
+  get-samples:
     name: ""
     runs-on: ubuntu-latest
     env:
