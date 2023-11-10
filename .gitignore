@@ -1,8 +1,10 @@
 node_modules
+*.secret**
 
 # Local
 .env
 files
+*.mp3
 
 # Mac
 .DS_Store

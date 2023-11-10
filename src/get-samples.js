@@ -1,7 +1,10 @@
 const AXIOS = require("axios");
 const CHEERIO = require("cheerio");
 const CP = require("child_process");
+
+// Modules
 const LOGGER = require("./logger");
+const GoogleDriveService = require("./services/google-drive.service");
 
 // Variables
 const Logger = new LOGGER("Get-Samples");
@@ -11,7 +14,6 @@ const ATTRIBUTE = "data-mp3";
 // Functions
 const downloadMp3 = async function (url, fileName) {
   CP.execSync(`curl -o ${fileName}  '${url}'`);
-  return fileName;
 };
 
 const getSounds = async (url) => {
@@ -27,10 +29,11 @@ const getSounds = async (url) => {
     Logger.log(url, " : ", urls);
 
     for (let [index, mp3Url] of urls.entries()) {
-      const mp3File = downloadMp3(mp3Url, `${index}-${SEARCH}.mp3`);
+      const name = `${index}-${SEARCH}.mp3`;
+      const fileName = downloadMp3(mp3Url, name);
 
-      if (mp3File) {
-        mp3Files.push(mp3File);
+      if (fileName) {
+        mp3Files.push(name);
       }
     }
 
@@ -45,11 +48,18 @@ const getSounds = async (url) => {
 (async () => {
   Logger.log("--- Start ---");
 
+  const driveService = new GoogleDriveService();
+
+  // Collect Sounds
   const mp3Files = await getSounds(
     `https://freesound.org/search/?q=${SEARCH}&f=license%3A%22creative+commons+0%22+duration%3A%5B0+TO+20%5D&w=&tm=0&s=Automatic+by+relevance&advanced=1&g=&only_p=&cm=0&page=1#sound`
   );
 
-  // TODO: Upload to Drive
+  // Upload to Drive
+  for (let name of mp3Files) {
+    const response = await driveService.uploadFile(name, "audio/mpeg");
+    Logger.log("Uploaded:  ", name, " ", response.data);
+  }
 
   Logger.log("--- End ---");
 })();

@@ -12,7 +12,9 @@ jobs:
     name: ""
     runs-on: ubuntu-latest
     env:
-      GOOGLE_DRIVE_API_TOKEN: ${{ secrets.GOOGLE_DRIVE_API_TOKEN }}
+      GOOGLE_DRIVE_CLIENT_EMAIL: ${{ secrets.GOOGLE_DRIVE_CLIENT_EMAIL }}
+      GOOGLE_DRIVE_PRIVATE_KEY: ${{ secret.GOOGLE_DRIVE_PRIVATE_KEY }}
+      GOOGLE_DRIVE_UPLOAD_FOLDER_ID: ${{ secret.GOOGLE_DRIVE_UPLOAD_FOLDER_ID }}
     steps:
       - uses: actions/checkout@v4
       - name: Setup Node.js
