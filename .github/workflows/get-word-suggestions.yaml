@@ -1,0 +1,27 @@
+name: Get-Word-Suggestions
+on:
+  workflow_dispatch:
+    inputs:
+      word:
+        description: "Word to use for Suggestions Collecting"
+        required: true
+        default: ""
+
+jobs:
+  get-word-suggestions:
+    name: ""
+    runs-on: ubuntu-latest
+    env:
+      GOOGLE_DRIVE_CLIENT_EMAIL: ${{ secrets.GOOGLE_DRIVE_CLIENT_EMAIL }}
+      GOOGLE_DRIVE_PRIVATE_KEY: ${{ secrets.GOOGLE_DRIVE_PRIVATE_KEY }}
+      GOOGLE_DRIVE_UPLOAD_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_UPLOAD_FOLDER_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20.x"
+      - run: |
+          yarn
+          echo "Word to look up: ${{ github.event.inputs.word }}"
+          node src/get-word-suggestions.js ${{ github.event.inputs.word }}
