@@ -5,6 +5,7 @@ node_modules
 .env
 files
 *.mp3
+.txt
 
 # Mac
 .DS_Store
