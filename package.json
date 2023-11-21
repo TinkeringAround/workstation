@@ -4,7 +4,8 @@
   "description": "Collection of Scripts used to help generate music mostly automatically",
   "main": "index.js",
   "scripts": {
-    "get-samples": "node src/get-samples.js guitar+electro"
+    "get-samples": "node src/get-samples.js guitar+electro",
+    "get-word-suggestions": "node src/get-word-suggestions.js Gitarre"
   },
   "keywords": [
     "ai",
