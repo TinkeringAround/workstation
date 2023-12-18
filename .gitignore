@@ -6,6 +6,7 @@ node_modules
 files
 *.mp3
 .txt
+dist
 
 # Mac
 .DS_Store
