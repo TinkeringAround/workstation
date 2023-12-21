@@ -1,12 +1,11 @@
-# Song Creation Pipeline
+# 🎧 Song Creation Pipeline
 
-Collection of Scripts used to help generate music mostly automatically.
+Express App Server to help improve the music creation process.
 
-# Scripts
+## 🎉 Samples
 
-1. [Crawler](src/crawler.js)
-   - Go to [Beatbot](https://beatbot.fm/)
-   - Entry "Song Description"
-   - Wait for Song Generation
-   - Download the Instrumental
-   - Upload to private Google Drive
+Search for Samples and Upload them to your Google Drive.
+
+## 🎉 Word Suggestions
+
+When writing Song Text, use the built-in dictionaries to get word suggestions.
