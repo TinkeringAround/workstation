@@ -1,17 +1,15 @@
 {
   "name": "song-creation-pipeline",
   "version": "0.0.1",
-  "description": "Collection of Scripts used to help generate music mostly automatically",
-  "main": "index.js",
+  "description": "Express App Server to help improve the music creation process",
+  "main": "src/index.ts",
   "scripts": {
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
     "build": "tsc",
-    "start": "node dist/index.js",
-    "get-samples": "node src/get-samples.js guitar+electro",
-    "get-word-suggestions": "node src/get-word-suggestions.js Gitarre"
+    "start": "node dist/index.js"
   },
   "keywords": [
-    "ai",
+    "generator",
     "music"
   ],
   "author": "Thomas Maier",

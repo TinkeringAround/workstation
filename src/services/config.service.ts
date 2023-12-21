@@ -2,7 +2,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export type ConfigKey =
-  | "PORT"
   | "GOOGLE_DRIVE_CLIENT_EMAIL"
   | "GOOGLE_DRIVE_PRIVATE_KEY"
   | "GOOGLE_DRIVE_UPLOAD_FOLDER_ID";

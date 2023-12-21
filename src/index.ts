@@ -1,7 +1,7 @@
 import express, { Response } from "express";
+import os from "os";
 
 // Services
-import { ConfigService } from "./services/config.service";
 import { LoggerService } from "./services/logger.service";
 
 // Routes
@@ -27,8 +27,10 @@ const initApp = () => {
         ERRORS.push(`NON-EXISTING RESOURCE "${req.url}"`);
         return res.sendStatus(500);
       })
-      .listen(ConfigService.get("PORT"), () => {
-        Logger.log(`⚡️[server]: Server is running`);
+      .listen(3000, () => {
+        Logger.log(
+          `⚡️[server]: Server is running on PORT 3000 with architecture ${os.arch()}`
+        );
       });
   } catch (error: any) {
     Logger.log(error);

@@ -4,13 +4,6 @@ import path from "path";
 import { LoggerService } from "./logger.service";
 import { ConfigService } from "./config.service";
 
-const CLIENT_EMAIL = ConfigService.get("GOOGLE_DRIVE_CLIENT_EMAIL") as string;
-const PRIVATE_KEY = atob(
-  ConfigService.get("GOOGLE_DRIVE_PRIVATE_KEY") as string
-);
-const UPLOAD_FOLDER_ID = ConfigService.get(
-  "GOOGLE_DRIVE_UPLOAD_FOLDER_ID"
-) as string;
 const LOGGER = new LoggerService("GoogleDriveService");
 
 export class GoogleDriveService {
@@ -18,14 +11,14 @@ export class GoogleDriveService {
 
   constructor() {
     this.jwtClient = new google.auth.JWT({
-      email: CLIENT_EMAIL,
-      key: PRIVATE_KEY,
+      email: ConfigService.get("GOOGLE_DRIVE_CLIENT_EMAIL") as string,
+      key: atob(ConfigService.get("GOOGLE_DRIVE_PRIVATE_KEY") as string),
       scopes: ["https://www.googleapis.com/auth/drive.file"],
     });
   }
 
   async getClient() {
-    await this.jwtClient.authorize();
+    await this.jwtClient?.authorize();
     return this.jwtClient;
   }
 
@@ -49,7 +42,7 @@ export class GoogleDriveService {
           fields: "id",
           requestBody: {
             name,
-            parents: [UPLOAD_FOLDER_ID],
+            parents: [ConfigService.get("GOOGLE_DRIVE_UPLOAD_FOLDER_ID")],
           },
           media: {
             mimeType,
