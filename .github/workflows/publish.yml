@@ -1,4 +1,4 @@
-name: Build and Publish Song-Creation-Pipeline Docker Image to Github Package Registry
+name: Publish Image to GPR
 
 on:
   release:

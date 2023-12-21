@@ -1,4 +1,5 @@
-FROM arm32v7/node
+FROM node:alpine
+RUN apk update && apk upgrade && apk --no-cache add curl
 WORKDIR /usr/src/app
 COPY package.json yarn.lock tsconfig.json ./
 COPY src src
