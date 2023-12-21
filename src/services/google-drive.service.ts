@@ -42,7 +42,9 @@ export class GoogleDriveService {
           fields: "id",
           requestBody: {
             name,
-            parents: [ConfigService.get("GOOGLE_DRIVE_UPLOAD_FOLDER_ID")],
+            parents: [
+              ConfigService.get("GOOGLE_DRIVE_UPLOAD_FOLDER_ID") as string,
+            ],
           },
           media: {
             mimeType,
