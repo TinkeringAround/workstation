@@ -1,8 +1,8 @@
 name: Build and Publish Song-Creation-Pipeline Docker Image to Github Package Registry
 
 on:
-  push:
-    branches: ["release"]
+  release:
+    types: [created]
 
 env:
   REGISTRY: ghcr.io
