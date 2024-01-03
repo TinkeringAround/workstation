@@ -6,8 +6,8 @@ const Logger = LoggerService.init("Suggestions");
 const LANGUAGES = ["german", "english", "french"];
 
 export const getSuggestions = (search: string) => {
-  Logger.log("Collecting Hits...");
   const total: string[] = [];
+
   LANGUAGES.map((language) => {
     const dict = JSON.parse(
       fs.readFileSync(
@@ -22,11 +22,16 @@ export const getSuggestions = (search: string) => {
   })
     .filter(({ hits }) => hits.length > 0)
     .forEach(({ hits, language }) => {
+      Logger.log(
+        "Collected Hit Count for language ",
+        language,
+        " ",
+        hits.length
+      );
       total.push(language.toUpperCase());
       total.push(...hits);
       total.push("");
     });
 
-  Logger.log(total);
-  return total;
+  return total.join("\n");
 };
