@@ -1,11 +1,7 @@
 version: "3.5"
 services:
   scp-server:
-    image: ghcr.io/tinkeringaround/song-creation-pipeline:0.0.1
-    container_name: scp-server
+    image: ghcr.io/tinkeringaround/workstation:0.0.1
+    container_name: workstation
     ports:
       - "3000:3000"
-    environment:
-      - GOOGLE_DRIVE_CLIENT_EMAIL=
-      - GOOGLE_DRIVE_PRIVATE_KEY=
-      - GOOGLE_DRIVE_UPLOAD_FOLDER_ID=
