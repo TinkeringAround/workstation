@@ -1,7 +1,7 @@
 version: "3.5"
 services:
   scp-server:
-    image: ghcr.io/tinkeringaround/workstation:0.0.1
+    image: ghcr.io/tinkeringaround/workstation:0.2.1
     container_name: workstation
     ports:
       - "3000:3000"

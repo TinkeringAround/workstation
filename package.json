@@ -1,22 +1,23 @@
 {
-  "name": "song-creation-pipeline",
-  "version": "0.0.1",
-  "description": "Express App Server to help improve the music creation process",
+  "name": "workstation",
+  "version": "0.2.1",
+  "description": "Express App Server to help improve daily life",
   "main": "src/index.ts",
   "scripts": {
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
     "build": "tsc",
     "start": "node dist/index.js",
-    "image:build": "docker buildx build --platform linux/arm/v7 -t scp ."
+    "image:build": "docker buildx build --platform linux/arm/v7 -t workstation ."
   },
   "keywords": [
+    "apple reminders",
+    "planner",
     "generator",
     "music"
   ],
   "author": "Thomas Maier",
   "license": "ISC",
   "dependencies": {
-    "@google-cloud/local-auth": "3.0.0",
     "axios": "1.6.1",
     "cheerio": "1.0.0-rc.12",
     "dotenv": "16.3.1",
