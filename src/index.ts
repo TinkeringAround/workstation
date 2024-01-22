@@ -7,6 +7,7 @@ import { LoggerService } from "./services/logger.service";
 // Routes
 import { router as samplesRouter } from "./routes/samples";
 import { router as suggestionsRouter } from "./routes/suggestions";
+import { router as plannerRouter } from "./routes/planner";
 
 // Variables
 const LOGGER = new LoggerService("index");
@@ -19,6 +20,8 @@ const initApp = () => {
       // Music Routes
       .use("/v1/music", samplesRouter)
       .use("/v1/music", suggestionsRouter)
+      // Planner Routes
+      .use("/v1/planner", plannerRouter)
       // Health
       .use("/health", (_, res: Response) =>
         res.status(200).send({
