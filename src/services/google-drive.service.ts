@@ -6,8 +6,9 @@ import { FileService } from "./file.service";
 const LOGGER = new LoggerService("Google-Drive-Service");
 
 export class GoogleDriveService {
-  jwtClient;
   static IDS: string[] = [];
+
+  jwtClient;
 
   constructor() {
     this.jwtClient = new google.auth.JWT({
@@ -24,6 +25,10 @@ export class GoogleDriveService {
 
   async getDriveService(auth: any) {
     return google.drive({ version: "v3", auth });
+  }
+
+  async getCalendarService(auth: any) {
+    return google.calendar({ version: "v3", auth });
   }
 
   async getId() {
@@ -107,7 +112,7 @@ export class GoogleDriveService {
       .find((file) =>
         type === "folder" ? file.name === name : file.name?.includes(name)
       )?.id;
-    this.logId(id);
+    this.logResult(id);
     return id;
   }
 
@@ -150,7 +155,7 @@ export class GoogleDriveService {
         })
       )
       .then((response) => response.data.id)
-      .then(this.logId)
+      .then(this.logResult)
       .catch(this.handleError);
   }
 
@@ -178,7 +183,7 @@ export class GoogleDriveService {
         })
       )
       .then((response) => response?.data?.id)
-      .then(this.logId)
+      .then(this.logResult)
       .catch(this.handleError);
   }
 
@@ -206,13 +211,13 @@ export class GoogleDriveService {
         })
       )
       .then((response) => response?.data?.id)
-      .then(this.logId)
+      .then(this.logResult)
       .catch(this.handleError);
   }
 
-  logId(id: any) {
-    LOGGER.log(`-> ${id}`);
-    return id;
+  logResult(result: any) {
+    LOGGER.log(`-> ${result}`);
+    return result;
   }
 
   handleError(error: any) {
