@@ -8,4 +8,4 @@ services:
     environment:
       - TZ=Europe/Berlin
     env_file:
-      - .env
+      - stack.env
