@@ -9,6 +9,12 @@ export class TimeService {
     return TimeService.toDateString(tomorrow);
   }
 
+  static get nextWeek() {
+    const nextWeek = new Date();
+    nextWeek.setUTCDate(nextWeek.getUTCDate() + 7);
+    return TimeService.toDateString(nextWeek);
+  }
+
   static addMinutes(minutes: number, date: Date) {
     const newDate = new Date(date.getTime());
     newDate.setTime(date.getTime() + minutes * 60 * 1000);

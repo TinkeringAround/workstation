@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { LoggerService } from "../../services/logger.service";
+import { LoggerService } from "../../../services/logger.service";
 import { getSuggestions } from "./get-suggestions";
-import { GoogleDriveService } from "../../services/google-drive.service";
+import { GoogleDriveService } from "../../../services/google-drive.service";
 
 const googleDriveService = new GoogleDriveService();
 const LOGGER = LoggerService.init("/suggestions");

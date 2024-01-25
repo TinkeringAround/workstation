@@ -1,6 +1,6 @@
 {
   "name": "workstation",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Express App Server to help improve daily life",
   "main": "src/index.ts",
   "scripts": {

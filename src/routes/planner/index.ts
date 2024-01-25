@@ -5,7 +5,7 @@ import { Planner } from "./planner";
 
 const LOGGER = new LoggerService("/planner");
 
-export const router = Router()
+export default Router()
   .delete("/", async (_, res) => {
     try {
       await new Planner([]).clearTasks();

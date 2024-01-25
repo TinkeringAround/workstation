@@ -88,8 +88,8 @@ export class Planner {
     return true;
   }
 
-  async clearTasks(timeMax = TimeService.toTimeString(TimeService.tomorrow)) {
-    LOGGER.log("Cleaning up last planned tasks...");
+  async clearTasks(timeMax = TimeService.toTimeString(TimeService.nextWeek)) {
+    LOGGER.log(`Cleaning up planned tasks until the ${timeMax}...`);
     const events =
       (await googleCalendarService.listEventsIn({
         calendarId: ConfigService.get("GOOGLE_DRIVE_CALENDAR_ID_TASKS"),
@@ -108,10 +108,7 @@ export class Planner {
   }
 
   private async getSlots(): Promise<CalendarEvent[]> {
-    const events =
-      (await googleCalendarService.listEventsIn({
-        timeMax: TimeService.toTimeString(this.latestDate),
-      })) ?? [];
+    const events = (await googleCalendarService.listEventsIn()) ?? [];
 
     return events
       .map((event) => new CalendarEvent(event))
