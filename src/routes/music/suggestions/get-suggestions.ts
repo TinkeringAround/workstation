@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { LoggerService } from "../../services/logger.service";
+import { LoggerService } from "../../../services/logger.service";
 
 const Logger = LoggerService.init("Suggestions");
 const LANGUAGES = ["german", "english", "french"];

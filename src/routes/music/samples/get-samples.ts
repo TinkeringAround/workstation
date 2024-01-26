@@ -1,7 +1,7 @@
 import AXIOS from "axios";
 import { load } from "cheerio";
-import { LoggerService } from "../../services/logger.service";
-import { FreesoundAudio } from "../../model";
+import { LoggerService } from "../../../services/logger.service";
+import { FreesoundAudio } from "../../../model";
 
 const LOGGER = new LoggerService("Get-Samples");
 const ID_ATTRIBUTE = "data-sound-id";

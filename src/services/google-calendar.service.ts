@@ -31,7 +31,7 @@ export class GoogleCalendarService {
   ): Promise<void | GoogleCalendarEvent[]> {
     const {
       timeMin = TimeService.toTimeString(TimeService.today),
-      timeMax = TimeService.toTimeString(TimeService.tomorrow),
+      timeMax = TimeService.toTimeString(TimeService.nextWeek),
       calendarId = ConfigService.get("GOOGLE_DRIVE_CALENDAR_ID"),
     } = options;
 
@@ -70,6 +70,7 @@ export class GoogleCalendarService {
   }
 
   async deleteEvent(eventId: string) {
+    LOGGER.log(`Deleting Calendar Event ${eventId}...`);
     return this.getClient()
       .then(this.getCalendarService)
       .then(async (calendarService) =>
