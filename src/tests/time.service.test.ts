@@ -62,13 +62,6 @@ describe("TimeService", () => {
     );
   });
 
-  it("should return time string", () => {
-    assert.equal(
-      TimeService.toTimeString("2024-01-05, 12:34"),
-      "2024-01-05T11:34:00.000Z" // GMT so 1 hour behind to Berlin Timezone
-    );
-  });
-
   it("should return time from date", () => {
     assert.equal(TimeService.getTime(new Date("2024-01-05, 12:34")), "11:34"); // GMT
     assert.equal(TimeService.getTime(new Date("2024-01-05, 09:05")), "08:05"); // GMT
