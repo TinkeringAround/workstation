@@ -25,6 +25,10 @@ export default class Reminder {
         dateTime: this.end,
         timeZone: "Europe/Berlin",
       },
+      reminders: {
+        useDefault: false,
+        overrides: [],
+      },
     };
   }
 

@@ -1,4 +1,3 @@
-import AXIOS from "axios";
 import { load } from "cheerio";
 import { LoggerService } from "../../../services/logger.service";
 import { FreesoundAudio } from "../../../model";
@@ -13,9 +12,9 @@ export const getSamples = async (search: string) => {
   const audios: FreesoundAudio[] = [];
 
   try {
-    LOGGER.log("Connecting to Freesound with search ", search);
-    const response = await AXIOS.get(url);
-    const queryHtml = load(response.data);
+    LOGGER.log("Connecting to Freesound with search", search);
+    const body = await (await fetch(url)).text();
+    const queryHtml = load(body);
 
     LOGGER.log("Collecting Sounds from Freesound");
     [...queryHtml(`[${MP3_ATTRIBUTE}]`)].forEach((e) =>
