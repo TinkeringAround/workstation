@@ -1,7 +1,7 @@
 version: "3.5"
 services:
   workstation:
-    image: ghcr.io/tinkeringaround/workstation:0.2.3
+    image: ghcr.io/tinkeringaround/workstation:0.2.4
     container_name: workstation
     ports:
       - "3000:3000"
